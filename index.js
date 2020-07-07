@@ -10,14 +10,14 @@ function preprocessing(image){
     return inputScale
 }
 async function app() {
-    console.log('Loading model..');
+    alert('Loading model. wait until success message shown');
     // Load the model.
     const model = await tf.loadLayersModel('json-model-2/model.json')
     model.compile({
         optimizer: 'adam',
         loss: 'binaryCrossentropy',
     })      
-    console.log('Successfully loaded model');
+    alert('Successfully loaded model');
 
 
 
