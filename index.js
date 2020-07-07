@@ -5,14 +5,9 @@ const inputElement = document.getElementById('input_image');
 function preprocessing(image){
     inputTensor = tf.browser.fromPixels(image)
     inputTensor = inputTensor.expandDims(0);
-    console.log(inputTensor)
-
-    //Normalize input
-    const inputMax = inputTensor.max();
-    const inputMin = inputTensor.min();  
-    const normalizedInputs = inputTensor.sub(inputMin).div(inputMax.sub(inputMin));
-
-    return normalizedInputs
+    inputScale = inputTensor.div(255)
+    console.log(inputScale)
+    return inputScale
 }
 async function app() {
     console.log('Loading model..');
@@ -28,6 +23,7 @@ async function app() {
 
     // Predict via upload
     inputElement.addEventListener('change', function () {
+        let prediction = 0.0
 
         // add image to preview
         var reader = new FileReader();
@@ -75,7 +71,6 @@ async function app() {
     //     img.dispose();
     //     await tf.nextFrame();
     // }
-
 
 }
 
