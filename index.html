@@ -1,5 +1,24 @@
 <html>
+<head>
 
+    <!-- Load the latest version of TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    
+</head>
+<body>
+    <div id="console"></div>
+    <!-- <video autoplay playsinline muted id="webcam" width="224" height="224"></video> -->
+    <!-- Load index.js after the content of the page -->
 
-    <script src=”https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.5.2/dist/tf.min.js"></script>
+    <input type="file" accept="image/*" id="input_image">
+    <img alt="preview" id="output_image" width="150px" height="150px">
+    <script src="index.js"></script>
+    <div>
+        Result:
+        <div id="confident"></div>
+        <div id="prediction"></div>
+    </div>
+
+    
+</body> 
 </html>
