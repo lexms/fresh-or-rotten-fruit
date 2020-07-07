@@ -1,19 +1,6 @@
 let net;
 const webcamElement = document.getElementById('webcam');
 const inputElement = document.getElementById('input_image');
-
-function preprocessing(image){
-    inputTensor = tf.browser.fromPixels(image)
-    inputTensor = inputTensor.expandDims(0);
-    console.log(inputTensor)
-
-    //Normalize input
-    const inputMax = inputTensor.max();
-    const inputMin = inputTensor.min();  
-    const normalizedInputs = inputTensor.sub(inputMin).div(inputMax.sub(inputMin));
-
-    return normalizedInputs
-}
 async function app() {
     console.log('Loading model..');
     // Load the model.
@@ -28,8 +15,6 @@ async function app() {
 
     // Predict via upload
     inputElement.addEventListener('change', function () {
-
-        // add image to preview
         var reader = new FileReader();
         reader.onload = function(){
         var output = document.getElementById('output_image');
@@ -37,14 +22,21 @@ async function app() {
         }
         reader.readAsDataURL(event.target.files[0]);
 
-        data = document.getElementById('output_image')
-        input = preprocessing(data)
-        prediction = model.predict(input);
-        prediction.print()
+        //Preprocessing input
+        const imageElement = document.getElementById('output_image');
+        inputTensor = tf.browser.fromPixels(imageElement)
+        inputTensor = inputTensor.expandDims(0);
+
+        //Preprocessing - Normalize input
+        const inputMax = inputTensor.max();
+        const inputMin = inputTensor.min();  
+        const normalizedInputs = inputTensor.sub(inputMin).div(inputMax.sub(inputMin));
+        //normalizedInputs.print()
+
+        prediction = model.predict(normalizedInputs, 10);
         prediction = prediction.flatten()
         prediction = prediction.arraySync()
-        label = tf.where(prediction > 0.5, 1, 0) // 0 Fresh, 1 Rotten
-        label.print()
+        label = tf.where(prediction > 0.5, 1, 0)
         label =label.arraySync()
 
         if (label == 0) {
@@ -59,7 +51,7 @@ async function app() {
         document.getElementById('confident').innerText  = confident.toFixed(2) +'%';
         document.getElementById('prediction').innerText  = predict_result;
 
-        input.dispose();
+        output.dispose();
     });
 
 
