@@ -6,17 +6,25 @@
     
 </head>
 <body>
-    <div id="console"></div>
-    <!-- <video autoplay playsinline muted id="webcam" width="224" height="224"></video> -->
-    <!-- Load index.js after the content of the page -->
-
-    <input type="file" accept="image/*" id="input_image">
-    <img alt="preview" id="output_image" width="150px" height="150px">
-    <script src="index.js"></script>
     <div>
-        Result:
-        <div id="confident"></div>
-        <div id="prediction"></div>
+        <video autoplay playsinline muted id="webcam" width="150" height="150"></video>
+        <div>
+            Result:
+            <div id="confident-video"></div>
+            <div id="prediction-video"></div>
+        </div>
+    </div>
+
+    <div>
+
+        <input type="file" accept="image/*" id="input_image">
+        <img alt="preview" id="output_image" width="150px" height="150px">
+        <script src="index.js"></script>
+        <div>
+            Result:
+            <div id="confident"></div>
+            <div id="prediction"></div>
+        </div>
     </div>
 
     
