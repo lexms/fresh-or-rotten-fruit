@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" http-equiv="Content-Type" content="text/html;">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Program Deteksi Buah Busuk dan Tidak Busuk Menggunakan Foto</title>
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="font-awesome.css" media="screen">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+  </head>
+  <body>
+
+    <!-- Just an image -->
+  <nav class="navbar navbar-ligh" style="background-color: white;">
+    <a class="navbar-brand" href="../index.html">
+      <img src="images/arrow_back.jpg" width="30" height="30" alt="">
+    </a>
+  </nav>
+
+    <div class="bg">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-md-12">
+          <h2 style="color:white;text-align:center;margin-top: 10%;">Program Deteksi Buah Busuk dan Tidak Busuk Menggunakan Foto</h2>
+        </div>
+         </div>
+        <br><br><br>
+         <div class="col-md-12">
+            <h4 style="text-align:center;color:white;">Please insert the data:</h4> 
+           
+            <div class="custom-file" style="margin-top: 2%;">
+              <input type="file"  class="custom-file-input" id="input_image" type="file" accept="image/*"">
+              <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
+
+          <div style="margin-top: 5%;">
+            <img  alt="Preview" id="output_image" src="images/bg2.png" class="mx-auto d-block" width="250px" height="250px" > 
+          </div>
+          <br>
+          <script src="index.js"></script>
+          <div class="card mx-auto d-block" style="width:400px">
+            <div class="card-body">
+              <h4 class="card-title">Result :</h4>
+              <div id="confident">Confident : </div>
+              <div id="prediction">Prediction : </div>
+            </div>
+          </div>
+
+         </div>
+      </div>
+    </div>
+
+   
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  </body>
+</html>
