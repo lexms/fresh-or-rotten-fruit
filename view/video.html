@@ -35,31 +35,34 @@
             Capture
           </button>
     </div>
-    <script src="index.js"></script>
     <div class="col-md-12" style="margin-top: 2%;">
       <div class="card mx-auto d-block" style="width:400px">
         <div class="card-body">
-          <h4 class="card-title">Result :</h4>
-          <div id="confident-video">Confident : </div>
-          <div id="prediction-video">Prediction : </div>
+          <h4 class="card-title" style="text-align: center;">Result :</h4>
+          <p>Confident :<div id="confident-video"></div></p>
+          <p>Prediction :<div id="prediction-video"></div></p>
         </div>
       </div>
     </div>
     </div>
   </div>
+  <button id="send_btn" style="display: none;">Test</button>
+  <input type="file" id="input_image" style="display: none;" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/src/loadingoverlay.js"></script>
     <script>
-        var video = document.querySelector('#webcam')
-          if (navigator.mediaDevices.getUserMedia) {
-          navigator.mediaDevices.getUserMedia({ video: true })
-            .then(function (stream) {
-              video.srcObject = stream;
-            })
-            .catch(function (error) {
-              console.log("Something went wrong!");
-            });
-        }
-     
-    </script>
+      var video = document.querySelector('#webcam')
+        if (navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true })
+          .then(function (stream) {
+            video.srcObject = stream;
+          })
+          .catch(function (error) {
+            console.log("Something went wrong!");
+          });
+      }
+   
+  </script>
+    <script src="../index.js"></script>
   </body>
 </html>

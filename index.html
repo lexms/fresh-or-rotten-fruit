@@ -1,36 +1,32 @@
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-
-    <!-- Load the latest version of TensorFlow.js -->
+    <meta charset="utf-8" http-equiv="Content-Type" content="text/html;">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<title>Program Deteksi Buah Busuk dan Tidak Busuk</title>
+    <link rel="stylesheet" href="view/main.css" />
+	<link rel="stylesheet" href="view/font-awesome/css/font-awesome.css" media="screen">
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-    
 </head>
 <body>
-    <div>
-        <video autoplay playsinline muted id="webcam" width="150" height="150"></video>
-        <div>
-            <div>
-                <div>Live Capturing</div>
-                <button id="button-on-off">Capture</button>
-            </div>
-            Result:
-            <div id="confident-video"></div>
-            <div id="prediction-video"></div>
-        </div>
-    </div>
-
-    <div>
-
-        <input type="file" accept="image/*" id="input_image">
-        <img alt="preview" id="output_image" width="150px" height="150px">
-        <script src="index.js"></script>
-        <div>
-            Result:
-            <div id="confident"></div>
-            <div id="prediction"></div>
-        </div>
-    </div>
-
-    
+	
+		<div class="bg">
+		  <div class="container">
+	
+			<div class="row">
+			  <div class="col-md-12" style="margin-top: 25%;">
+			  <div id="content" style="color: white;text-align: center;" class="grid_12">
+				<h1>Program Deteksi Buah Busuk dan Tidak Busuk</h1>
+				<p>Select input data type:</p>
+				<p>
+					<a href="view/video.html" class="btn btn-success btn-lg"role="button">Video</a>
+					<a href="view/photo.html" class="btn btn-primary btn-lg"role="button">Photo</a>
+				</p>
+			</div>
+			</div>
+		</div>
+		</div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 </body> 
 </html>
