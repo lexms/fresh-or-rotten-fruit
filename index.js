@@ -1,5 +1,7 @@
 
 const webcamElement = document.getElementById('webcam');
+webcamElement.width = 150;
+webcamElement.height = 150;
 const inputElement = document.getElementById('input_image');
 const buttonElement = document.getElementById('button-on-off');
 const labelText = document.getElementById('choose_file');
@@ -14,7 +16,7 @@ function preprocessing(image){
 }
 async function app() {
 
-    //alert('Loading model. wait until success message shown');
+    alert('Loading model. wait until success message shown');
     const model = await tf.loadLayersModel('../json-model-2/model.json')
     model.compile({
         optimizer: 'adam',
@@ -91,6 +93,7 @@ async function app() {
 
     const webcam = await tf.data.webcam(webcamElement);
     buttonElement.addEventListener('click', function(){
+        //console.log('clicked')
         $.LoadingOverlay("show"); //untuk memunculkan
         currentvalue = buttonElement.innerText
         if(currentvalue == "Capture"){
