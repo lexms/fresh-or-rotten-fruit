@@ -13,15 +13,24 @@ function preprocessing(image){
     //console.log(inputScale)
     return inputScale
 }
-async function app() {
 
-    alert('Loading model. wait until success message shown');
+//alert load model
+Swal.fire({
+    title: 'Loading model...',
+    text: "Please wait until success message shown!",
+    icon: 'warning',
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes'
+  }).then((result) => {
+
+async function app() {
+      
     const model = await tf.loadLayersModel('../json-model-2/model.json')
     model.compile({
         optimizer: 'adam',
         loss: 'binaryCrossentropy',
     })      
-    swal("Success", "Load model successfully, please click OK", "success");
 
     sendButton.addEventListener('click', function() {
         let prediction = 0.0
@@ -134,6 +143,16 @@ async function app() {
     //   }
     })
     
-}
+} 
+
+//alert success model
+if (result.value) {
+    Swal.fire(
+      'Success!',
+      'Load model successfully, please click OK',
+      'success'
+    )
+  }
+})
 
 app();
