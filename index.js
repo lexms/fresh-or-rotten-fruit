@@ -1,5 +1,7 @@
 
 const webcamElement = document.getElementById('webcam');
+webcamElement.width = 150;
+webcamElement.height = 150;
 const inputElement = document.getElementById('input_image');
 const buttonElement = document.getElementById('button-on-off');
 const labelText = document.getElementById('choose_file');
@@ -20,7 +22,7 @@ async function app() {
         optimizer: 'adam',
         loss: 'binaryCrossentropy',
     })      
-    console.log("MODEL"+model)
+    //console.log("MODEL"+model)
     //alert('Successfully loaded model');
 
     sendButton.addEventListener('click', function() {
@@ -92,6 +94,7 @@ async function app() {
 
     const webcam = await tf.data.webcam(webcamElement);
     buttonElement.addEventListener('click', function(){
+        //console.log('clicked')
         $.LoadingOverlay("show"); //untuk memunculkan
         currentvalue = buttonElement.innerText
         if(currentvalue == "Capture"){
