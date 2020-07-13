@@ -1,7 +1,6 @@
 
 const webcamElement = document.getElementById('webcam');
-webcamElement.width = 150;
-webcamElement.height = 150;
+
 const inputElement = document.getElementById('input_image');
 const buttonElement = document.getElementById('button-on-off');
 const labelText = document.getElementById('choose_file');
@@ -90,7 +89,8 @@ async function app() {
         captured.dispose();
         await tf.nextFrame();
     }
-
+    webcamElement.width = 150;
+    webcamElement.height = 150;
     const webcam = await tf.data.webcam(webcamElement);
     buttonElement.addEventListener('click', function(){
         //console.log('clicked')
