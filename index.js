@@ -20,8 +20,7 @@ async function app() {
         optimizer: 'adam',
         loss: 'binaryCrossentropy',
     })      
-    console.log("MODEL"+model)
-    //alert('Successfully loaded model');
+    swal("Success", "Load model successfully, please click OK", "success");
 
     sendButton.addEventListener('click', function() {
         let prediction = 0.0
