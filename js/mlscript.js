@@ -6,6 +6,10 @@ function preprocessing(tensor){
     return input
 }
 
+$(document).ready(function() {
+    $(".loading").addClass("invisible");
+    $(".loaded").removeClass("invisible");
+});
 
 async function predict_video(model){
     const videoElement = document.getElementById('cam')
