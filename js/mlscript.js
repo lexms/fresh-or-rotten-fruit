@@ -1,6 +1,6 @@
 
-function preprocessing(img){
-    input = img
+function preprocessing(tensor){
+    input = tensor
     input = input.expandDims(0)
     input = input.div(255)
     return input
@@ -25,13 +25,15 @@ async function predict_video(model){
     if (label == 0) {
         confident = 1.0-prediction
         predict_result = 'Fresh Fruit'
+        document.getElementById('prediction-video').style.color = "green"
     }else{
         confident = prediction
         predict_result = 'Rotten Fruit'
+        document.getElementById('prediction-video').style.color = "red"
     }     
     confident = confident * 100
-    document.getElementById('confident-video').innerText  = confident.toFixed(2) +'%'
-    document.getElementById('prediction-video').innerText  = predict_result
+    document.getElementById('confident-video').innerText = confident.toFixed(2) +'%'
+    document.getElementById('prediction-video').innerText = predict_result
 
 
     img.dispose();
@@ -40,7 +42,7 @@ async function predict_video(model){
 
 async function predict_image(model){
     img = document.getElementById('output_image')
-    img = tf.browser.fromPixels(img)
+    img = tf.browser.fromPixels(img) // change pixels to tensor
     img_processed = preprocessing(img)
     
     prediction = 0.0
@@ -53,9 +55,11 @@ async function predict_image(model){
     if (label == 0) {
         confident = 1.0-prediction
         predict_result = 'Fresh Fruit'
+        document.getElementById('prediction').style.color = "green"
     }else{
         confident = prediction
         predict_result = 'Rotten Fruit'
+        document.getElementById('prediction').style.color = "red"
     }
     confident = confident * 100
     document.getElementById('confident').innerText  = confident.toFixed(2) +'%'
