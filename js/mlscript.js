@@ -65,7 +65,7 @@ async function predict_image(model){
 
 async function app(){
     //Load the model
-    const model = await tf.loadLayersModel('json-model-2/model.json')
+    const model = await tf.loadLayersModel('json-model/model.json')
     model.compile({
         optimizer: 'adam',
         loss: 'binaryCrossentropy',
