@@ -44,7 +44,7 @@
           
               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#collapseElement">
                 <div class="card-body">
-                    <video autoplay playsinline muted id="cam" width="150" height="150" capture="environment"></video>
+                    <video autoplay="true" playsinline muted id="cam" width="150" height="150" capture="environment"></video>
                     <div>
                         <button id="button-on-off" class="btn btn-primary">Capture</button>
                     </div>
@@ -89,8 +89,19 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script>
+      var video = document.querySelector('#webcam')
+        if (navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true })
+          .then(function (stream) {
+            video.srcObject = stream;
+          })
+          .catch(function (error) {
+            console.log("Something went wrong!");
+          });
+      }
+  </script>
     <script src="assets/js/script.js"></script>
     <script src="assets/js/mlscript.js"></script>
-    
 </body> 
 </html>
