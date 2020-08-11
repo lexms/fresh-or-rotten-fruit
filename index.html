@@ -1,107 +1,32 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <title>Fresh/Rotten Fruit Detector</title>
-  <meta description="Detecting whether it's a fresh or rotten fruit with artificial intelligence">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Favicon -->
-  <link rel="apple-touch-icon" sizes="57x57" href="assets/favicon/apple-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="assets/favicon/apple-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="assets/favicon/apple-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="assets/favicon/apple-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="assets/favicon/apple-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="assets/favicon/apple-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="assets/favicon/apple-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="assets/favicon/apple-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-icon-180x180.png">
-  <link rel="icon" type="image/png" sizes="192x192"  href="assets/favicon/android-icon-192x192.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-  <link rel="manifest" href="assets/favicon/manifest.json">
-  <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="msapplication-TileImage" content="assets/favicon//ms-icon-144x144.png">
-  <meta name="theme-color" content="#ffffff">
-
-  <!-- Load the latest version of TensorFlow.js -->
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="assets/style/style.css">
+    <meta charset="utf-8" http-equiv="Content-Type" content="text/html;">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<title>Program Deteksi Buah Busuk dan Tidak Busuk</title>
+    <link rel="stylesheet" href="view/main.css" />
+	<link rel="stylesheet" href="view/font-awesome/css/font-awesome.css" media="screen">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
 </head>
 <body>
-    <section id="home">
-        <div class="main-title">Fresh or Rotten Fruit Detector</div>
-        <div class="accordion" id="collapseElement">
-            <div class="card">
-              <div class="card-header" id="headingOne">
-                <h2 class="mb-0">
-                  <button class="heading-1 btn btn-block text-center" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">  
-                    Detect with Camera
-                  </button>
-                </h2>
-              </div>
-          
-              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#collapseElement">
-                <div class="card-body">
-                    <video autoplay="true" playsinline muted id="cam" width="150" height="150" capture="environment"></video>
-                    <div>
-                        <button id="button-on-off" class="btn btn-primary">Capture</button>
-                    </div>
-                    <div class="result">
-                        <div>
-                            Confident: <i id="confident-video"></i>
-                        </div>
-                        <div>
-                            Prediction: <i id="prediction-video"></i>
-                        </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header" id="headingTwo">
-                <h2 class="mb-0">
-                  <button class="heading-1 btn btn-block text-center collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Detect with Upload
-                  </button>
-                </h2>
-              </div>
-              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#collapseElement">
-                <div class="card-body">           
-                    <img  alt="preview" src="assets/images/preview.png" id="output_image" width="150px" height="150px">
-                    <input type="file" accept="image/*" id="input_image">
-            
-                    <div class="result">
-                        <div>
-                            Confident: <i id="confident"></i>
-                        </div>
-                        <div>
-                            Prediction: <i id="prediction"></i>
-                        </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-        </div>
-    </section>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <script>
-      var video = document.querySelector('#webcam')
-        if (navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices.getUserMedia({ video: true })
-          .then(function (stream) {
-            video.srcObject = stream;
-          })
-          .catch(function (error) {
-            console.log("Something went wrong!");
-          });
-      }
-  </script>
-    <script src="assets/js/script.js"></script>
-    <script src="assets/js/mlscript.js"></script>
+	
+		<div class="bg">
+		  <div class="container">
+	
+			<div class="row">
+			  <div class="col-md-12" style="margin-top: 25%;">
+			  <div id="content" style="color: white;text-align: center;" class="grid_12">
+				<h1>Program Deteksi Buah Busuk dan Tidak Busuk</h1>
+				<p>Select input data type:</p>
+				<p>
+					<a href="view/video.html" class="btn btn-success btn-lg"role="button">Video</a>
+					<a href="view/photo.html" class="btn btn-primary btn-lg"role="button">Photo</a>
+				</p>
+			</div>
+			</div>
+		</div>
+		</div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 </body> 
 </html>
