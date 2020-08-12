@@ -105,7 +105,9 @@ Swal.fire({
                 btn_on_off.innerText = 'Capture'
 
             }
+            $.LoadingOverlay("show"); //show loading page
             predict_video(model)
+            $.LoadingOverlay("hide"); //close loading page
         })
 
         const inputElement = document.getElementById("input_image")
@@ -117,8 +119,9 @@ Swal.fire({
                 output.src = reader.result;
             }
             reader.readAsDataURL(event.target.files[0]);
-
+            $.LoadingOverlay("show"); //show loading page
             predict_image(model)
+            $.LoadingOverlay("hide"); //close loading page
         })
 
     }
